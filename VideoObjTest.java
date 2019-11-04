@@ -87,7 +87,9 @@ public class VideoObjTest {
 
 	@Test
 	public void testEquals() {
-		// TODO: complete testEquals test
+        VideoObj vid1 = new VideoObj("ET", 1982, "Steven Spielberg");
+        VideoObj vid2 = new VideoObj("ET", 1982, "Steven Spielberg");
+        assertTrue(vid1.equals(vid2));
 	}
 
 	@Test
