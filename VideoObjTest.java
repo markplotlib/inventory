@@ -60,7 +60,21 @@ public class VideoObjTest {
 
 	@Test
 	public void testConstructorExceptionDirector() {
-		// TODO: complete testConstructorExceptionDirector test
+        // Director is non-null
+        try {
+            new VideoObj("ET", 1982, null);
+            fail();
+        } catch (IllegalArgumentException e) {}
+        // Director is no leading or final spaces
+        try {
+            new VideoObj("ET", 1982, " ");
+            fail();
+        } catch (IllegalArgumentException e) {}
+        // Director is not empty string.
+        try {
+            new VideoObj("ET", 1982, "");
+            fail();
+        } catch (IllegalArgumentException e) {}
 	}
 
 	@Test
