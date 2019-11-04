@@ -1,4 +1,4 @@
-package data;
+package mchesney_hw5;
 
 /**
  * Immutable Data Class for video objects.
