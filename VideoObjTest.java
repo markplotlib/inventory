@@ -94,7 +94,21 @@ public class VideoObjTest {
 
 	@Test
 	public void testCompareTo() {
-		// TODO: complete testCompareTo test
+        VideoObj v1984 = new VideoObj("Ghostbusters", 1984, "Ivan Reitman");
+        VideoObj v1989 = new VideoObj("Ghostbusters II", 1989, "Ivan Reitman");
+        VideoObj v2016 = new VideoObj("Ghostbusters", 2016, "Paul Feig");
+        // test reflexivity
+        assertTrue(v1984.compareTo(v1984) == 0);
+        // test symmetry
+        assertTrue(v1984.compareTo(v2016) == -v2016.compareTo(v1984));
+        assertTrue(v1984.compareTo(v1989) == -v1989.compareTo(v1984));
+        // test transivity
+        boolean condition1, condition2;
+        condition1 = v2016.compareTo(v1989) > 0 && v1989.compareTo(v1984) > 0;
+        condition2 = v2016.compareTo(v1984);
+        assertEquals(condition1, condition2);
+        // test consistency with this.equals(that)
+        assertEquals(v1984.compareTo(v1984) == 0, v1984.equals(v1984));
 	}
 
 	@Test
