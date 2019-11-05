@@ -68,8 +68,11 @@ final class VideoObj implements Comparable<VideoObj> {
 	 */
 	@Override
 	public boolean equals(Object thatObject) {
-		// TODO: implement equals method
-		return false;
+        if (this == thatObject) return true;
+        if (!(thatObject instanceof VideoObj)) return false;
+        VideoObj vid = (VideoObj)thatObject;
+        return (title.equals(thatObject)) && (year == thatObject.year) &&
+            (director.equals(thatObject));
 	}
 
 	/**
