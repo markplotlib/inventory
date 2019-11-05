@@ -30,6 +30,11 @@ final class VideoObj implements Comparable<VideoObj> {
 	 */
 	VideoObj(String title, int year, String director)
                                         throws IllegalArgumentException {
+        boolean hasNull = (title == null | director == null);
+        boolean hasEmptyString = (title.trim().equals("") | director.trim().equals(""));
+        if (hasNull | hasEmptyString) {
+            throw new IllegalArgumentException();
+        }
 		this.title = title.trim();
 		this.year = year;
 		this.director = director.trim();
