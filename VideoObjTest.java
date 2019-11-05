@@ -85,12 +85,32 @@ public class VideoObjTest {
 		(2057189520, new VideoObj("Blah", 1954, "Cante").hashCode());
 	}
 
-	@Test
-	public void testEquals() {
+    @Test
+    public void testEquals() {
         VideoObj vid1 = new VideoObj("ET", 1982, "Steven Spielberg");
+        // test reflexivity -- identical objects (identical memory allocation)
+        assertTrue(vid1.equals(vid1));
+        // two objects of all equal fields -- copies of same video
         VideoObj vid2 = new VideoObj("ET", 1982, "Steven Spielberg");
         assertTrue(vid1.equals(vid2));
-	}
+        // test symmetry
+        assertTrue(vid2.equals(vid1));
+        // test transivity
+        VideoObj vid3 = new VideoObj("ET", 1982, "Steven Spielberg");
+        assertTrue(vid2.equals(vid3) && vid1.equals(vid3));
+        // object is not of the correct type
+        Integer i = new Integer(3);
+        // unequal fields
+        // unequal titles
+        VideoObj schin = new VideoObj("Schin List", 1982, "Steven Spielberg");
+        assertFalse(vid1.equals(schin));
+        // unequal years
+        VideoObj et2000 = new VideoObj("ET", 2000, "Steven Spielberg");
+        assertFalse(vid1.equals(et2000));
+        // unequal director
+        VideoObj etJoeB = new VideoObj("ET", 1982, "Joe Biden");
+        assertFalse(vid1.equals(etJoeB));
+    }
 
 	@Test
 	public void testCompareTo() {
