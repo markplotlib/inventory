@@ -28,35 +28,32 @@ final class VideoObj implements Comparable<VideoObj> {
 	 * Title and director are "trimmed" to remove leading and final space.
 	 * @throws IllegalArgumentException if any object invariant is violated.
 	 */
-	VideoObj(String title, int year, String director) {
-		// TODO: implement VideoObj constructor
-		this.title = null;
-		this.year = 0;
-		this.director = null;	  
+	VideoObj(String title, int year, String director)
+                                        throws IllegalArgumentException {
+		this.title = title.trim();
+		this.year = year;
+		this.director = director.trim();
 	}
 
 	/**
 	 * Return the value of the attribute.
 	 */
 	public String director() {
-		// TODO: implement director method
-		return "director";
+		return director;
 	}
 
 	/**
 	 * Return the value of the attribute.
 	 */
 	public String title() {
-		// TODO: implement title method
-		return "title";
+		return title;
 	}
 
 	/**
 	 * Return the value of the attribute.
 	 */
 	public int year() {
-		// TODO: implement year method
-		return -1;
+		return year;
 	}
 
 	/**
