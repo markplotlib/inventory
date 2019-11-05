@@ -112,11 +112,11 @@ final class VideoObj implements Comparable<VideoObj> {
 	/**
 	 * Return a string representation of the object in the following format:
 	 * <code>"title (year) : director"</code>.
+     * @return string representation of object
 	 */
 	@Override
 	public String toString() {
-		// TODO: implement toString method
-		return "El Mariachi (1996) : Rodriguez";
+        return title + " (" + year + ") : " + director;
 	}
 
 }
