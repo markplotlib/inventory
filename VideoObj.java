@@ -78,11 +78,14 @@ final class VideoObj implements Comparable<VideoObj> {
 	/**
 	 * Return a hash code value for this object using the algorithm from Bloch:
 	 * fields are added in the following order: title, year, director.
+     * @return distinct hash code int value
 	 */
 	@Override
 	public int hashCode() {
-		// TODO: implement hashCode method
-		return -1;
+       int result = title.hashCode();
+       result = 31 * result + Integer.hashCode(year);
+       result = 31 * result + director.hashCode();
+       return result;
 	}
 
 	/**
