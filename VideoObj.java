@@ -97,8 +97,16 @@ final class VideoObj implements Comparable<VideoObj> {
 	 */
 	@Override
 	public int compareTo(VideoObj thatObject) {
-		// TODO: implement compareTo method
-		return -1;
+        int result = String.CASE_INSENSITIVE_ORDER.compare(title,
+                                                           thatObject.title);
+        if (result == 0) {
+            result = Integer.compare(year, thatObject.year);
+            if (result == 0) {
+                result = String.CASE_INSENSITIVE_ORDER.compare(director,
+                                                             thatObject.title);
+            }
+        }
+        return result;
 	}
 
 	/**
