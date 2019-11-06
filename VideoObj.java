@@ -1,4 +1,4 @@
-package data;
+package mchesney_hw5;
 
 /**
  * Immutable Data Class for video objects.
@@ -28,35 +28,37 @@ final class VideoObj implements Comparable<VideoObj> {
 	 * Title and director are "trimmed" to remove leading and final space.
 	 * @throws IllegalArgumentException if any object invariant is violated.
 	 */
-	VideoObj(String title, int year, String director) {
-		// TODO: implement VideoObj constructor
-		this.title = null;
-		this.year = 0;
-		this.director = null;	  
+	VideoObj(String title, int year, String director)
+                                        throws IllegalArgumentException {
+        boolean hasNull = (title == null || director == null);
+        boolean hasEmptyString = (title.trim().equals("") || director.trim().equals(""));
+        if (hasNull || hasEmptyString) {
+            throw new IllegalArgumentException();
+        }
+		this.title = title.trim();
+		this.year = year;
+		this.director = director.trim();
 	}
 
 	/**
 	 * Return the value of the attribute.
 	 */
 	public String director() {
-		// TODO: implement director method
-		return "director";
+		return director;
 	}
 
 	/**
 	 * Return the value of the attribute.
 	 */
 	public String title() {
-		// TODO: implement title method
-		return "title";
+		return title;
 	}
 
 	/**
 	 * Return the value of the attribute.
 	 */
 	public int year() {
-		// TODO: implement year method
-		return -1;
+		return year;
 	}
 
 	/**
@@ -66,18 +68,24 @@ final class VideoObj implements Comparable<VideoObj> {
 	 */
 	@Override
 	public boolean equals(Object thatObject) {
-		// TODO: implement equals method
-		return false;
+        if (this == thatObject) return true;
+        if (!(thatObject instanceof VideoObj)) return false;
+        VideoObj thatVid = (VideoObj)thatObject;
+        return (title.equals(thatVid.title)) && (year == thatVid.year) &&
+            (director.equals(thatVid.director));
 	}
 
 	/**
 	 * Return a hash code value for this object using the algorithm from Bloch:
 	 * fields are added in the following order: title, year, director.
+     * @return distinct hash code int value
 	 */
 	@Override
 	public int hashCode() {
-		// TODO: implement hashCode method
-		return -1;
+       int result = title.hashCode();
+       result = 31 * result + Integer.hashCode(year);
+       result = 31 * result + director.hashCode();
+       return result;
 	}
 
 	/**
@@ -89,18 +97,26 @@ final class VideoObj implements Comparable<VideoObj> {
 	 */
 	@Override
 	public int compareTo(VideoObj thatObject) {
-		// TODO: implement compareTo method
-		return -1;
+        int result = String.CASE_INSENSITIVE_ORDER.compare(title,
+                                                           thatObject.title);
+        if (result == 0) {
+            result = Integer.compare(year, thatObject.year);
+            if (result == 0) {
+                result = String.CASE_INSENSITIVE_ORDER.compare(director,
+                                                             thatObject.title);
+            }
+        }
+        return result;
 	}
 
 	/**
 	 * Return a string representation of the object in the following format:
 	 * <code>"title (year) : director"</code>.
+     * @return string representation of object
 	 */
 	@Override
 	public String toString() {
-		// TODO: implement toString method
-		return "El Mariachi (1996) : Rodriguez";
+        return title + " (" + year + ") : " + director;
 	}
 
 }

@@ -1,4 +1,4 @@
-package data;
+package mchesney_hw5;
 
 import static org.junit.Assert.*;
 

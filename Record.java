@@ -1,4 +1,4 @@
-package data;
+package mchesney_hw5;
 
 /**
  * Utility class for Inventory.  Fields are mutable and package-private.

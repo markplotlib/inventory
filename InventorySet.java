@@ -1,4 +1,4 @@
-package data;
+package mchesney_hw5;
 
 import java.util.Map;
 import java.util.HashMap;
