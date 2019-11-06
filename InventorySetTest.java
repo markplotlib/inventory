@@ -40,7 +40,21 @@ public class InventorySetTest {
 
 	@Test
 	public void testCheckOutCheckIn() {
-		// TODO: complete testCheckOutCheckIn test
+        // test checkOut
+        s.clear();
+        // throws IllegalArgumentException if video has no record
+        try {
+            s.checkOut(v1);
+            fail();
+        } catch (IllegalArgumentException e) {}
+        // happy path
+        s.addNumOwned(v2, 1);
+        s.checkOut(v2);
+        // throws IllegalArgumentException if numOut equals numOwned.
+        try {
+            s.checkOut(v2);
+            fail();
+        } catch (IllegalArgumentException e) {}
 	}
 
 	@Test
