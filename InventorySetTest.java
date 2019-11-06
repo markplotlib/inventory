@@ -45,7 +45,10 @@ public class InventorySetTest {
 
 	@Test
 	public void testClear() {
-		// TODO: complete testClear test
+        s.addNumOwned(v1, 5);
+        s.addNumOwned(v2, 3);
+        s.clear();
+        assertEquals(0, s.size());
 	}
 
 	@Test
