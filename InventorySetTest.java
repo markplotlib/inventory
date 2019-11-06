@@ -105,6 +105,26 @@ public class InventorySetTest {
 		// collection does not change the original records in the
 		// inventory.  ToCollection should return a COPY of the records,
 		// not the records themselves.
+        Collection<Record> emptiness = s.toCollection();
+        assertEquals(0, emptiness.size());
+        s.addNumOwned(v1, 1);
+        s.addNumOwned(v2, 2);
+        Collection<Record> copied = s.toCollection();
+        // underlying collection not returned.
+        assertNotSame(s, copied);
+        // actual records not returned.
+        assertNotSame(s.get(v1), copied.get(v1));
+        for (VideoObj v : s) {
+            assertNotSame(s.get(v1), copied.get(v1));
+        }
+        // changing records in returned collection does not change original
+        copied.addNumOwned(v1, 9);
+        assertFalse(s.get(v1).numOwned > 1);
+        // changing records in original collection does not change returned
+        s.addNumOwned(v2, -1);
+        assertFalse(copied.get(v2).numOwned == s.get(v2).numOwned);
+        s.clear();
+        assertTrue(copied.size() > 0);
 	}
 
 }
