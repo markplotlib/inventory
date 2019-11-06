@@ -49,6 +49,9 @@ public class InventorySetTest {
         s.addNumOwned(v2, 3);
         s.clear();
         assertEquals(0, s.size());
+        // clear() results in an empty inventory state, even if it was empty 
+        s.clear();
+        assertEquals(0, s.size());
 	}
 
 	@Test
