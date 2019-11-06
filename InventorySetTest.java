@@ -55,6 +55,23 @@ public class InventorySetTest {
             s.checkOut(v2);
             fail();
         } catch (IllegalArgumentException e) {}
+
+        // test checkIn
+        s.clear()
+        // happy path
+        s.addNumOwned(v1, 1);
+        s.checkOut(v1);
+        s.checkIn(v1);
+        // throws IllegalArgumentException if video has no record.
+        try {
+            s.checkIn(v2);
+            fail();
+        } catch (IllegalArgumentException e) {}
+        // throws IllegalArgumentException if numOut non-positive.
+        try {
+            s.checkIn(v1);
+            fail();
+        } catch (IllegalArgumentException e) {}
 	}
 
 	@Test
