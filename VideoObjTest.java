@@ -100,6 +100,7 @@ public class VideoObjTest {
         assertTrue(vid2.equals(vid3) && vid1.equals(vid3));
         // object is not of the correct type
         Integer i = new Integer(3);
+        assertFalse(vid1.equals(i));
         // unequal fields
         // unequal titles
         VideoObj schin = new VideoObj("Schin List", 1982, "Steven Spielberg");
@@ -125,7 +126,7 @@ public class VideoObjTest {
         // test transivity
         boolean condition1, condition2;
         condition1 = v2016.compareTo(v1989) > 0 && v1989.compareTo(v1984) > 0;
-        condition2 = v2016.compareTo(v1984);
+        condition2 = v2016.compareTo(v1984) > 0;
         assertEquals(condition1, condition2);
         // test consistency with this.equals(that)
         assertEquals(v1984.compareTo(v1984) == 0, v1984.equals(v1984));
