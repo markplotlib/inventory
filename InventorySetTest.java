@@ -49,7 +49,7 @@ public class InventorySetTest {
         s.addNumOwned(v2, 3);
         s.clear();
         assertEquals(0, s.size());
-        // clear() results in an empty inventory state, even if it was empty 
+        // clear() results in an empty inventory state, even if it was empty
         s.clear();
         assertEquals(0, s.size());
 	}
@@ -57,7 +57,11 @@ public class InventorySetTest {
 	@Test
 	public void testGet() {
 		// TODO: complete testGet test
+        // *  Return a copy of the record for a given Video; if not present, return <code>null</code>.
 		// Get should return a COPY of the records, not the records themselves.
+        s.addNumOwned(v1, 5);
+// VideoObj vGot = 
+        assertEquals()
 	}
 
 	@Test
