@@ -115,19 +115,22 @@ public class VideoObjTest {
 
 	@Test
 	public void testCompareTo() {
-        VideoObj v1984 = new VideoObj("Ghostbusters", 1984, "Ivan Reitman");
-        VideoObj v1989 = new VideoObj("Ghostbusters II", 1989, "Ivan Reitman");
-        VideoObj v2016 = new VideoObj("Ghostbusters", 2016, "Paul Feig");
+        VideoObj v1 = new VideoObj("t1", 1984, "d1");
+        // test reflexivity
+        VideoObj v1copy = new VideoObj("t1", 1984, "d1");
+        assertTrue(v1.compareTo(v1copy) == 0);
         // test symmetry
-        assertTrue(v1984.compareTo(v2016) == -v2016.compareTo(v1984));
-        assertTrue(v1984.compareTo(v1989) == -v1989.compareTo(v1984));
+        VideoObj v2 = new VideoObj("t2", 1989, "d1");
+        VideoObj v3 = new VideoObj("t1", 2016, "d2");
+        assertTrue(v1.compareTo(v3) == -v3.compareTo(v1));
+        assertTrue(v1.compareTo(v2) == -v2.compareTo(v1));
         // test transivity
         boolean condition1, condition2;
-        condition1 = v2016.compareTo(v1989) > 0 && v1989.compareTo(v1984) > 0;
-        condition2 = v2016.compareTo(v1984) > 0;
+        condition1 = v3.compareTo(v2) > 0 && v2.compareTo(v1) > 0;
+        condition2 = v3.compareTo(v1) > 0;
         assertEquals(condition1, condition2);
         // test consistency with this.equals(that)
-        assertEquals(v1984.compareTo(v1984) == 0, v1984.equals(v1984));
+        assertEquals(v1.compareTo(v1) == 0, v1.equals(v1));
 	}
 
 	@Test
