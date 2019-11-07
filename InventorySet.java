@@ -67,8 +67,35 @@ final class InventorySet {
 	 *  attempting to remove copies that are checked out.
 	 * <p><b>Postcondition:</b> changes the record for the video</p>
 	 */
-	public void addNumOwned(VideoObj video, int change) {
-		// TODO: implement addNumOwned method
+	public void addNumOwned(VideoObj video, int change)
+                            throws IllegalArgumentException {
+        // Exception: if video null
+        if (video == null)
+            throw new IllegalArgumentException();
+        // Exception: if change is zero
+        if (change == 0)
+            throw new IllegalArgumentException();
+        // Exception: if attempting to remove more copies than are owned
+        if (data.get(video).numOwned + change < 0)
+            throw new IllegalArgumentException();
+        // Exception: if attempting to remove copies that are checked out
+        if (data.get(video).numOwned - data.get(video).numOut + change < 0)
+            throw new IllegalArgumentException();
+
+        // record present
+		if (data.containsKey(video)) {
+			data.get(video).numOwned += change;
+            // If number of copies = zero, record removed from inventory
+            if (data.get(video).numOwned == 0)
+            	data.remove(video);
+        }
+        else {
+            // record NOT present --> create new record
+            if (change > 0)
+            	data.put(video, new Record(video, change, 0, 0));
+            else
+            	throw new IllegalArgumentException();
+        }
 	}
 
 	/**

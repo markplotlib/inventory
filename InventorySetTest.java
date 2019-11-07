@@ -2,8 +2,6 @@ package mchesney_hw5;
 
 import static org.junit.Assert.*;
 
-import java.util.Collection;
-
 import org.junit.Test;
 
 public class InventorySetTest {
