@@ -36,7 +36,10 @@ final class InventorySet {
 	 *  Return a copy of the record for a given Video; if not present, return <code>null</code>.
 	 */
 	public Record get(VideoObj v) {
-		return data.get(v);
+        if (data.containsKey(v))
+            return data.get(v).copy();
+        else
+            return null;
 	}
 
 	/**
@@ -75,6 +78,8 @@ final class InventorySet {
         // Exception: if change is zero
         if (change == 0)
             throw new IllegalArgumentException();
+
+            
         // Exception: if attempting to remove more copies than are owned
         if (data.get(video).numOwned + change < 0)
             throw new IllegalArgumentException();
