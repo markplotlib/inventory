@@ -2,6 +2,7 @@ package mchesney_hw5;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.Test;
@@ -102,26 +103,24 @@ public class InventorySetTest {
         assertNull(vDoNotGot);
 	}
 
-/*
+
 	@Test
 	public void testToCollection() {
 		Collection<Record> emptiness = s.toCollection();
         assertEquals(0, emptiness.size());
-        s.addNumOwned(v1, 1);
-        Collection<Record> coll2 = s.toCollection();
+        s.addNumOwned(v1, 2);
+        ArrayList<Record> copied = (ArrayList<Record>) s.toCollection();
+        assertEquals(copied.size(), s.size());
         // actual records not returned.
-        assertNotSame(s.get(v1), coll2.get(v1));
-        for (VideoObj v : s) {
-            assertNotSame(s.get(v1), coll2.get(v1));
-        }
+        assertNotSame(s.get(v1), copied.get(0));
         // changing records in returned collection does not change original
-        coll2.addNumOwned(v1, 9);
-        assertFalse(s.get(v1).numOwned > 1);
+        copied.set(0, new Record(v2, 99, 0, 0));
+        assertTrue(s.get(v1).numOwned < 9);
         // changing records in original collection does not change returned
-        s.addNumOwned(v2, -1);
-        assertFalse(coll2.get(v2).numOwned == s.get(v2).numOwned);
+        s.addNumOwned(v1, -1);
+        assertFalse(copied.get(0).numOwned == s.get(v1).numOwned);
         s.clear();
-        assertTrue(coll2.size() > 0);
+        assertFalse(copied.size() == s.size());
 	}
-*/
+
 }
