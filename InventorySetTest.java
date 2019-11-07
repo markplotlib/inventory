@@ -51,8 +51,10 @@ public class InventorySetTest {
             fail();
         } catch (IllegalArgumentException e) {}
         // happy path
-        s.addNumOwned(v2, 1);
-        s.checkOut(v2);
+        s.addNumOwned(v2, 3);
+        s.checkOut(v2);      assertEquals(s.get(v2).numOut, 1);
+        s.checkOut(v2);      assertEquals(s.get(v2).numOut, 2);
+        s.checkOut(v2);      assertEquals(s.get(v2).numOut, 3);
         // throws IllegalArgumentException if numOut equals numOwned.
         try {
             s.checkOut(v2);
@@ -61,15 +63,17 @@ public class InventorySetTest {
 
         // test checkIn
         s.clear();
-        // happy path
-        s.addNumOwned(v1, 1);
-        s.checkOut(v1);
-        s.checkIn(v1);
         // throws IllegalArgumentException if video has no record.
         try {
             s.checkIn(v2);
             fail();
         } catch (IllegalArgumentException e) {}
+        // happy path
+        s.addNumOwned(v1, 3);
+        s.checkOut(v1);      s.checkOut(v1);     s.checkOut(v1);
+        s.checkIn(v1);       assertEquals(s.get(v1).numOut, 2);
+        s.checkIn(v1);       assertEquals(s.get(v1).numOut, 1);
+        s.checkIn(v1);       assertEquals(s.get(v1).numOut, 0);
         // throws IllegalArgumentException if numOut non-positive.
         try {
             s.checkIn(v1);
