@@ -91,15 +91,19 @@ public class InventorySetTest {
 	public void testGet() {
         // Return a copy of the record for a given Video
         s.addNumOwned(v1, 5);
-        Record vGot = s.get(v1);
-        assertTrue(v1.equals(vGot));
+        Record recGot = s.get(v1);
+// System.out.print("v1: ");
+// System.out.println(v1);
+// System.out.print("recGot: ");
+// System.out.println(recGot);
+        assertTrue(v1.equals(recGot));
         // Get should return a COPY of the records, not the records themselves.
-        assertNotSame(v1, vGot);
+        assertNotSame(v1, recGot);
         // if not present, return <code>null</code>.
         Record vDoNotGot = s.get(v2);
         assertNull(vDoNotGot);
 	}
-
+/*
 	@Test
 	public void testToCollection() {
 		// TODO: complete testToCollection test
@@ -126,5 +130,5 @@ public class InventorySetTest {
         s.clear();
         assertTrue(coll2.size() > 0);
 	}
-
+*/
 }
