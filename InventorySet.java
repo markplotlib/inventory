@@ -96,7 +96,7 @@ final class InventorySet {
                 throw new IllegalArgumentException();
 
             data.get(video).numOwned += change;
-            
+
             // If number of copies becomes zero, record removed from inventory
             if (data.get(video).numOwned == 0)
                 data.remove(video);
@@ -110,8 +110,15 @@ final class InventorySet {
 	 * equals numOwned.
 	 * <p><b>Postcondition:</b> changes the record for the video</p>
 	 */
-	public void checkOut(VideoObj video) {
-		// TODO: implement checkOut method
+	public void checkOut(VideoObj video) throws IllegalArgumentException {
+        // no record found
+        if (!data.containsKey(video))
+            throw new IllegalArgumentException();
+        // no copies available
+        if (data.get(video).numOut == data.get(video).numOwned)
+            throw new IllegalArgumentException();
+
+        data.get(video).numOut += 1;
 	}
 
 	/**
@@ -121,8 +128,16 @@ final class InventorySet {
 	 * non-positive.
 	 * <p><b>Postcondition:</b> changes the record for the video</p>
 	 */
-	public void checkIn(VideoObj video) {
-		// TODO: implement checkIn method
+	public void checkIn(VideoObj video) throws IllegalArgumentException {
+        // no record found
+        if (!data.containsKey(video))
+            throw new IllegalArgumentException();
+
+        // numOut must be positive to check in.
+        if (data.get(video).numOut <= 0)
+            throw new IllegalArgumentException();
+
+        data.get(video).numOut -= 1;
 	}
 
 	/**
