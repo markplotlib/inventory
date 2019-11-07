@@ -108,7 +108,7 @@ final class VideoObj implements Comparable<VideoObj> {
             result = Integer.compare(year, thatObject.year);
             if (result == 0) {
                 result = String.CASE_INSENSITIVE_ORDER.compare(director,
-                                                             thatObject.title);
+                                                             thatObject.director);
             }
         }
         return result;
