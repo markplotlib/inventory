@@ -1,3 +1,8 @@
+/*
+ * Mark Chesney
+ * CPSC 5011, Seattle University
+ * This is free and unencumbered software released into the public domain.
+ */
 package mchesney_hw5;
 
 import java.util.Map;
@@ -14,6 +19,9 @@ import java.util.Collection;
  *   Every key and value in the map is non-<code>null</code>.
  * <p><b>Object Invariant:</b></p>
  *   Each value <code>r</code> is stored under key <code>r.video</code>.
+ *   
+ * @author Mark Chesney
+ * @version 1.0
  */
 final class InventorySet {
 
@@ -33,7 +41,10 @@ final class InventorySet {
 	}
 
 	/**
-	 *  Return a copy of the record for a given Video; if not present, return <code>null</code>.
+	 *  Return a copy of the record for a given Video; 
+	 *  if not present, return <code>null</code>.
+	 *  @param video object of interest
+	 *  @return copy of record
 	 */
 	public Record get(VideoObj v) {
         if (data.containsKey(v))
@@ -45,6 +56,7 @@ final class InventorySet {
 	/**
 	 * Return a copy of the records as a collection.
 	 * Neither the underlying collection, nor the actual records are returned.
+	 * @return collection of records copied over
 	 */
 	public Collection<Record> toCollection() {
 		// Recall that an ArrayList is a Collection.

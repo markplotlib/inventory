@@ -1,3 +1,8 @@
+/*
+ * Mark Chesney
+ * CPSC 5011, Seattle University
+ * This is free and unencumbered software released into the public domain.
+ */
 package mchesney_hw5;
 
 /**
@@ -11,6 +16,9 @@ package mchesney_hw5;
  *   Year is greater than 1800, less than 5000.
  * <p><b>Object Invariant:</b></p>
  *   Director is non-null, no leading or final spaces, not empty string.
+ *   
+ * @author Mark Chesney
+ * @version 1.0
  */
 final class VideoObj implements Comparable<VideoObj> {
 

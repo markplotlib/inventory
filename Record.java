@@ -1,3 +1,8 @@
+/*
+ * Mark Chesney
+ * CPSC 5011, Seattle University
+ * This is free and unencumbered software released into the public domain.
+ */
 package mchesney_hw5;
 
 /**
@@ -5,6 +10,9 @@ package mchesney_hw5;
  * Does not override <code>equals</code> or <code>hashCode</code>.
  *
  * <p><b>Class Type:</b> Mutable Data Class</p>
+ * 
+ * @author Mark Chesney
+ * @version 1.0
  */
 final class Record {
 
