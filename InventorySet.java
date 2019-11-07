@@ -85,7 +85,7 @@ final class InventorySet {
         // record present
 		if (data.containsKey(video)) {
 			data.get(video).numOwned += change;
-            // If number of copies = zero, record removed from inventory
+            // If number of copies becomes zero, record removed from inventory
             if (data.get(video).numOwned == 0)
             	data.remove(video);
         }

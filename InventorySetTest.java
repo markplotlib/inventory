@@ -2,6 +2,8 @@ package mchesney_hw5;
 
 import static org.junit.Assert.*;
 
+import java.util.Collection;
+
 import org.junit.Test;
 
 public class InventorySetTest {
@@ -90,10 +92,6 @@ public class InventorySetTest {
         // Return a copy of the record for a given Video
         s.addNumOwned(v1, 5);
         Record recGot = s.get(v1);
-// System.out.print("v1: ");
-// System.out.println(v1);
-// System.out.print("recGot: ");
-// System.out.println(recGot);
         assertTrue(v1.equals(recGot));
         // Get should return a COPY of the records, not the records themselves.
         assertNotSame(v1, recGot);
@@ -101,21 +99,16 @@ public class InventorySetTest {
         Record vDoNotGot = s.get(v2);
         assertNull(vDoNotGot);
 	}
+
 /*
 	@Test
 	public void testToCollection() {
-		// TODO: complete testToCollection test
-		// Be sure to test that changing records in the returned
-		// collection does not change the original records in the
-		// inventory.  ToCollection should return COPY of records,
-		// not records themselves.
-
 		Collection<Record> emptiness = s.toCollection();
         assertEquals(0, emptiness.size());
         s.addNumOwned(v1, 1);
         Collection<Record> coll2 = s.toCollection();
         // actual records not returned.
-        assertNotSame(s.get(v1), ((InventorySet)coll2).get(v1));
+        assertNotSame(s.get(v1), coll2.get(v1));
         for (VideoObj v : s) {
             assertNotSame(s.get(v1), coll2.get(v1));
         }
