@@ -28,23 +28,21 @@ final class InventorySet {
 	 * Return the number of Records.
 	 */
 	public int size() {
-		// TODO: implement size method
-		return 0;
+		return data.size();
 	}
 
 	/**
 	 *  Return a copy of the record for a given Video; if not present, return <code>null</code>.
 	 */
 	public Record get(VideoObj v) {
-		// TODO: implement get method
-		return null;
+		return data.get(v);
 	}
 
 	/**
 	 * Return a copy of the records as a collection.
 	 * Neither the underlying collection, nor the actual records are returned.
 	 */
-	public Collection<Record> toCollection() {	
+	public Collection<Record> toCollection() {
 		// TODO: implement toCollection method
 		// Recall that an ArrayList is a Collection.
 		return null;
@@ -96,7 +94,7 @@ final class InventorySet {
 	 * <p><b>Postcondition:</b> <code>size() == 0</code></p>
 	 */
 	public void clear() {
-		// TODO: implement clear method
+		data.clear();
 	}
 
 	/**
