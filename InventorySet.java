@@ -2,6 +2,7 @@ package mchesney_hw5;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -43,9 +44,12 @@ final class InventorySet {
 	 * Neither the underlying collection, nor the actual records are returned.
 	 */
 	public Collection<Record> toCollection() {
-		// TODO: implement toCollection method
 		// Recall that an ArrayList is a Collection.
-		return null;
+		ArrayList<Record> copied = new ArrayList<>();
+        for (Record rec : data.values()) {
+        	copied.add(rec.copy());
+        }
+		return copied;
 	}
 
 	/**
