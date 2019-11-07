@@ -79,27 +79,27 @@ final class InventorySet {
         if (change == 0)
             throw new IllegalArgumentException();
 
-            
-        // Exception: if attempting to remove more copies than are owned
-        if (data.get(video).numOwned + change < 0)
-            throw new IllegalArgumentException();
-        // Exception: if attempting to remove copies that are checked out
-        if (data.get(video).numOwned - data.get(video).numOut + change < 0)
-            throw new IllegalArgumentException();
+        // Is record NOT present?
+        if (!data.containsKey(video)) {
+            // if change > 0, then create new record; otherwise, exception
+            if (change < 0)
+                throw new IllegalArgumentException();
+            else
+                data.put(video, new Record(video, change, 0, 0));
+        } else {
+            // record IS present
+            // Exception: if attempting to remove more copies than are owned
+            if (data.get(video).numOwned + change < 0)
+                throw new IllegalArgumentException();
+            // Exception: if attempting to remove copies that are checked out
+            if (data.get(video).numOwned - data.get(video).numOut + change < 0)
+                throw new IllegalArgumentException();
 
-        // record present
-		if (data.containsKey(video)) {
-			data.get(video).numOwned += change;
+            data.get(video).numOwned += change;
+            
             // If number of copies becomes zero, record removed from inventory
             if (data.get(video).numOwned == 0)
-            	data.remove(video);
-        }
-        else {
-            // record NOT present --> create new record
-            if (change > 0)
-            	data.put(video, new Record(video, change, 0, 0));
-            else
-            	throw new IllegalArgumentException();
+                data.remove(video);
         }
 	}
 
