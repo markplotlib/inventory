@@ -118,8 +118,6 @@ public class VideoObjTest {
         VideoObj v1984 = new VideoObj("Ghostbusters", 1984, "Ivan Reitman");
         VideoObj v1989 = new VideoObj("Ghostbusters II", 1989, "Ivan Reitman");
         VideoObj v2016 = new VideoObj("Ghostbusters", 2016, "Paul Feig");
-        // test reflexivity
-        assertTrue(v1984.compareTo(v1984) == 0);
         // test symmetry
         assertTrue(v1984.compareTo(v2016) == -v2016.compareTo(v1984));
         assertTrue(v1984.compareTo(v1989) == -v1989.compareTo(v1984));
